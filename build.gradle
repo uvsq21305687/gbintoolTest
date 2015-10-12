@@ -1,16 +1,17 @@
-task hello(description: "Affiche Hello") {
-    doLast {
-        print "Hello, "
-    }
+plugins {
+    id 'com.github.johnrengelman.shadow' version '1.2.2'
+}
+
 apply plugin: 'groovy'
+
+apply plugin: 'application'
+mainClassName = 'fr.uvsq.doosa.gradletuto.Main'
 
 repositories {
     mavenCentral()
- }
- 
-task world(description: "Affiche world", dependsOn: hello) << {
-    println "world !"
-} 
+}
+
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.5'
+    testCompile 'junit:junit:4.+'
 }
